@@ -14,15 +14,15 @@ build: $(SRC)
 	@iverilog -o $(TARGET) $(SRC)
 	@echo -e "-----------\n"
 
-	## or
-	# ls -1 *.v | file_list.txt
-	# @iverilog -o $(TARGET) -c file_list.txt
+## or
+# ls -1 *.v | file_list.txt
+# @iverilog -o $(TARGET) -c file_list.txt
 
 
 # run the compiled output in simulation envirolment
 run: build
 	@echo "----RUN----"
-	@vvp $(TARGET)
+	@vvp $(TARGET) | tee test.txt
 	@echo -e "-----------\n"
 
 show:
