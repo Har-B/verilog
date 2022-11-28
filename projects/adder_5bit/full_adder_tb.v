@@ -17,7 +17,7 @@ initial
 begin
 
 	$monitor("time=%2t: A=%0b B=%0b Cin=%0b -> Sum=%0b Cout=%0b", $time, a_tb, b_tb, c_in_tb, sum_tb, c_out_tb);
-	$dumpfile("a.vcd");
+	$dumpfile("tb.vcd");
 	$dumpvars(0, dut);
 
 		a_tb = 0; b_tb = 0; c_in_tb = 0;

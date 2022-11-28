@@ -1,32 +1,34 @@
-# TODO: create right dependencies of targets
 
+TB := full_adder_8bit_tb.v
+
+# TODO include_dir and their SRC's
+SRC := $(wildcard *.v)
 SHELL=/bin/bash
 
-SRC := $(wildcard *.v)
-TARGET := a.vpp
+
 
 all: run
 
 # start the verilog compiler
-build: $(SRC)
+tb.vpp: $(SRC)
 	@echo "----BUILD----"
-	@ls -l $(SRC)	
-	@iverilog -o $(TARGET) $(SRC)
-	@echo -e "-----------\n"
-
-## or
-# ls -1 *.v | file_list.txt
-# @iverilog -o $(TARGET) -c file_list.txt
-
+	./build.sh $(TB)
 
 # run the compiled output in simulation envirolment
-run: build
+tb_run.result: build
 	@echo "----RUN----"
-	@vvp $(TARGET) | tee test.txt
-	@echo -e "-----------\n"
+	@vvp tb.vpp | tee tb_run.result
 
-show:
-	gtkwave a.vcd
+
+
+build: tb.vpp 
+
+run: tb_run.result
+
+show: 
+	gtkwave tb.vcd
 
 clean:
-	rm -r *.vpp *.vcd
+	rm -r *.vpp *.vcd *.testResult
+
+.PHONY: build run 

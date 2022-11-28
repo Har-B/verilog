@@ -24,7 +24,7 @@ module full_adder_8bit_tb;
         $monitor("#pyCMD# %d + %d + %0b == %d + 256 * %0b", a_tb, b_tb, c_in_tb, sum_tb, c_out_tb);
         
         // produce output
-        $dumpfile("a.vcd");
+        $dumpfile("tb.vcd");
         $dumpvars(0, dut8);
 
         /* manual value testing */
