@@ -1,9 +1,9 @@
 module full_adder_8bit(
     input [7:0]a,
     input [7:0]b,
-    input c_in,		// carry bit
+    input c_in,         // carry bit in
     output [7:0]sum,
-    output c_out	// carry bit
+    output c_out        // carry bit out
 );
 
     wire  w_c_1, w_c_2, w_c_3, w_c_4, w_c_5, w_c_6, w_c_7;
@@ -17,5 +17,4 @@ module full_adder_8bit(
     full_adder a6 (.a(a[6]), .b(b[6]), .c_in(w_c_6), .sum(sum[6]), .c_out(w_c_7));
     full_adder a7 (.a(a[7]), .b(b[7]), .c_in(w_c_7), .sum(sum[7]), .c_out(c_out));
 
-    
 endmodule

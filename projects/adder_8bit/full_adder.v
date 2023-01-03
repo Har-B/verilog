@@ -1,9 +1,9 @@
 module full_adder (
-	input a,
-	input b,
-	input c_in,	// carriage in
-	output sum,
-	output c_out 	// carriage out
+    input a,
+    input b,
+    input c_in,     // carriage in
+    output sum,
+    output c_out    // carriage out
 );
 
 // Code for Adder implementation
