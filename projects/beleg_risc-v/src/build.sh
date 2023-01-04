@@ -12,7 +12,7 @@ if [[ -e $TESTBENCH ]]; then
     echo "$TESTBENCH -> $TARGET"
 else
     echo "ERROR: File '${TESTBENCH}' not exist"
-    echo "Coose correct *_tb.v file!"
+    echo "Choose correct *_tb.v file!"
     exit 1
 fi
 

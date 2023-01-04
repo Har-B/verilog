@@ -9,8 +9,8 @@ module full_adder_16bit(
     // wire for carry
     wire w_c_1;
 
-    full_adder_8bit a0 (.a(a[7:0]),     .b(b[7:0]),     .c_in(c_in),    .c_out(w_c_1));
-    full_adder_8bit a1 (.a(a[15:8]),    .b(b[15:8])     .c_in(w_c_1),   .c_out(c_out));
+    full_adder_8bit a0 (.a(a[7:0]),     .b(b[7:0]),     .c_in(c_in),    .sum(sum[7:0]),   .c_out(w_c_1));
+    full_adder_8bit a1 (.a(a[15:8]),    .b(b[15:8]),    .c_in(w_c_1),   .sum(sum[15:8]),  .c_out(c_out));
 
 endmodule
 
@@ -25,7 +25,7 @@ module full_adder_32bit(
     // wire for carry
     wire w_c_1;
 
-    full_adder_8bit a0 (.a(a[15:0]),    .b(b[15:0]),    .c_in(c_in),    .c_out(w_c_1));
-    full_adder_8bit a1 (.a(a[31:16]),   .b(b[31:16]),   .c_in(w_c_1),   .c_out(c_out));
+    full_adder_16bit a0 (.a(a[15:0]),    .b(b[15:0]),    .c_in(c_in),   .sum(sum[15:0]),     .c_out(w_c_1));
+    full_adder_16bit a1 (.a(a[31:16]),   .b(b[31:16]),   .c_in(w_c_1),  .sum(sum[31:16]),    .c_out(c_out));
 
 endmodule
