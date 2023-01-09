@@ -12,18 +12,20 @@ RISC-V uses LITTLE_ENDIAN -> least significant byte is stored at the smallest me
 NOTE: ignore 16bit instructions while design
 */
 
-module rom2t24x32bit (
-    input  [23:0] addr_in,      // address
+module rom2t14x32bit (
+    input  [15:0] addr_in,      // address
     output [31:0] data_out      // data output (instruction)
 );
 
     // one address 8 Bit wide
     // 4* 8Bit = one 32-bit-istruction
-    // 2^24/4 = 2^22 32-bit-instructions
-    reg [7:0] rom[16777215:0]; 
+    // 2^16/4 = 2^14 32-bit-instructions
+    reg [7:0] rom[65536:0]; 
 
     initial begin
-        $readmemh("rom_image.mem", rom);
+        // $readmemh("rom_image.mem", rom);
+        $readmemb("rom_image_risc.mem", rom);
+
     end
 
     // register file storage

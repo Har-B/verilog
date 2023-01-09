@@ -93,7 +93,7 @@ Listing1:
 1 ADDI x1, x0, 5    # 32'b000000000101_00000_000_00001_0010011
 2 ADDI x2, x0, 4    # 32'b000000000100_00000_000_00010_0010011
 3 ADDI x3, x0, 0    # 32'b000000000000_00000_000_00011_0010011
-7 ADDI x2, x2, -1   # 32'b111111111111_00010_000_00020_0010011
+7 ADDI x2, x2, -1   # 32'b111111111111_00010_000_00010_0010011
 ~~~~
 
 **ADD:**
@@ -131,9 +131,11 @@ B-Type:
 
 ---------------------------------------------------------------
 Listing1:
-                    #     
-loop-memory-address = 3; (cannot use uneven numbers because of imm[0] = 0 ) add one undefined instruction  at the begin TODO: Ask how Jump works
-loop-memory-address = 4
-                    #     imm      regI1 regI2
-8 BLT x0, x2, loop  # 32'b0_000000_00000_00010_100_0010_0_1100011
+
+loop-memory-address = 3*4(as 32bit-instructions stored as 4 bytes) = 12
+BLT-memory-address = 5*4 = 20
+diff = 8
+(cannot use uneven numbers because of imm[0] = 0)
+                    #     imm      regI1 regI2 fu3 imm    opcode 
+8 BLT x0, x2, loop  # 32'b0_000000_00000_00010_100_0100_0_1100011
 ~~~~

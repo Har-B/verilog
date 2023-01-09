@@ -1,22 +1,22 @@
-module rom2t24x32bit_tb();
+module rom2t14x32bit_tb();
 
 localparam WIDTH = 32;
 
-    reg [23:0] addr_tb;
+    reg [15:0] addr_tb;
     wire [WIDTH-1:0] data_tb;
 
-    rom2t24x32bit dut (
+    rom2t14x32bit dut (
         .addr_in(addr_tb),
         .data_out(data_tb)
     );
 
     initial begin
         // produce output for terminal
-        $monitor("Addr=%0h Data=%0b", addr_tb, data_tb);
+        $monitor("Addr=%0d Data=%0b", addr_tb, data_tb);
 
         // produce wave output file
         $dumpfile("tb.vcd");
-        $dumpvars(0, rom2t24x32bit_tb);
+        $dumpvars(0, rom2t14x32bit_tb);
     end
 
     initial begin
@@ -28,6 +28,7 @@ localparam WIDTH = 32;
         #5 addr_tb = 3;
 
         // normal acess of first address of 32bit-instruction stored in 4*8bit storage
+        #5 addr_tb = 0;
         #5 addr_tb = 4;
         #5 addr_tb = 8;
         #5 addr_tb = 12;
