@@ -134,8 +134,8 @@ Listing1:
 
 loop-memory-address = 3*4(as 32bit-instructions stored as 4 bytes) = 12
 BLT-memory-address = 5*4 = 20
-diff = 8
+diff = 12 - 30 = -8 = 13'b1_1111_1111_1000
 (cannot use uneven numbers because of imm[0] = 0)
                     #     imm      regI1 regI2 fu3 imm    opcode 
-8 BLT x0, x2, loop  # 32'b0_000000_00000_00010_100_0100_0_1100011
+8 BLT x0, x2, loop  # 32'b1_111111_00000_00010_100_1100_1_1100011
 ~~~~
