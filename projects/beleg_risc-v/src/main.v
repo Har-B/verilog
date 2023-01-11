@@ -1,45 +1,64 @@
-module main;
+module main (
+    input clk,
+    input rst
+);
 
 /*
-
+    TODO: instruction is one beind of pc
 */
 
     /* programm counter */
-    reg [15:0] pc, pc_next;
+    reg [15:0] pc;
+    wire [15:0] pc_next;
     reg [31:0] instruction;
-    reg clk, rst;
+    wire [31:0] instruction_next;
+    wire zero;
+    wire [15:0] pc_step;
 
-    // reg [15:0] a_tb;
-    // reg [15:0] b_tb;
-    // reg c_in_tb;
-    // wire [15:0] sum_tb;
-    // wire c_out_tb;
-    // wire [15:0] sum_all_tb;
+    wire [15:0] adder_pc_a;
+    wire [15:0] adder_pc_b;
+
+    assign zero = 1'b0;
+    assign pc_step = 16'h00_04;
 
     /* init external module */
-    /* rom */
-    rom2t14x32bit dut (     
+    /* ROM */
+    rom2t14x32bit rom (     
             .addr_in(pc),
-            .data_out(instruction)
+            .data_out(instruction_next)
     );
 
     /* 16bit adder for programm counter */
-    full_adder_16bit dut (
-        .a(),
-        .b(),
-        .c_in(),
-        .sum(),
+    full_adder_16bit adder_pc (
+        .a(adder_pc_a),
+        .b(adder_pc_b),
+        .c_in(zero),
+        .sum(pc_next),
         .c_out()
     );
 
+    /* ALU */
+    // TODO
+
+    assign adder_pc_a = pc;
+    assign adder_pc_b = pc_step;
 
 
-//     // wires to alu
-//     wire ;
+    /* sequential logic */
 
-//     /* init external module */
-//     // ALU
+    always @(posedge clk, posedge rst) begin
+        if (rst) begin
+            // reset PC
+            pc <= 16'd0;
+        end
+        else begin
+            // get new pc from adder
+            pc <= pc_next;
 
+            instruction <= instruction_next;
+            // TODO: add functionality of relative branching
+        end
 
+    end
 
 endmodule
