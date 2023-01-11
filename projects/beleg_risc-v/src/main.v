@@ -39,6 +39,8 @@ module main (
 
     /* ALU */
     // TODO
+    /* Register */
+    // TODO
 
     assign adder_pc_a = pc;
     assign adder_pc_b = pc_step;
