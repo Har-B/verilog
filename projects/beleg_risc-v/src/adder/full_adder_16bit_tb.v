@@ -25,8 +25,7 @@ wire [WIDTH:0] sum_all_tb;
 
 
     /* external stimulation of DUT */
-    initial 
-    begin
+    initial begin
 
         // produce output for terminal
         $monitor("time=%2t: A=%d B=%d Cin=%0b -> Sum=%d Cout=%0b", $time, a_tb, b_tb, c_in_tb, sum_tb, c_out_tb);

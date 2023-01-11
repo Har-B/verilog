@@ -31,7 +31,7 @@ wire [31:0] instruction_tb;
     end
 
     // Generate clk
-    always #2 clk_tb = !clk_tb;
+    always #1 clk_tb = !clk_tb;
 
     initial begin
 
@@ -41,7 +41,7 @@ wire [31:0] instruction_tb;
         #2 rst_tb <= 1;
         #2 rst_tb <= 0;
         
-        #40 $finish;
+        #30 $finish;
     end
 
 
